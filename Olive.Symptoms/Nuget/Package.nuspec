@@ -1,0 +1,17 @@
+﻿<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>MSharp</id>
+		<version>1.0.100</version>
+		<title>Olive.Symptoms</title>
+		<authors>Geeks Ltd</authors>
+		<projectUrl>https://github.com/Geeksltd/Olive.Symptoms</projectUrl>		
+		<copyright>Copyright ©2021 Geeks Ltd - All rights reserved.</copyright>
+		<description>See project site</description>		 
+	</metadata>
+	<files>
+		<file src="..\Olive.Symptoms\bin\Debug\netcoreapp3.1\Olive.Symptoms.dll" 	target="lib\netcoreapp3.1\" />
+		<file src="..\Olive.Symptoms\bin\Debug\netcoreapp3.1\Olive.Symptoms.xml" 	target="lib\netcoreapp3.1\" />
+		<file src="..\Olive.Symptoms.Net46\bin\Debug\Olive.Symptoms.dll" 			target="lib\net46\" />
+		<file src="..\Olive.Symptoms.Net46\bin\Debug\Olive.Symptoms.xml" 			target="lib\net46\" />		
+	</files>
+</package>
