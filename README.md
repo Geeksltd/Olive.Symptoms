@@ -18,7 +18,7 @@ It consists of two main components:
 - A central component that collects, processes, measures and communicates the warning information.
 - Microservice agent components, that send sympton data to the central component.
 
-Each symptom item will have a UniqueID, Warning and a Receipient.
+Each symptom item will have a UniqueID, Warning, Receipient and optionally a FixUrl.
 
 ## Installing the central component
 
@@ -52,7 +52,7 @@ public class SymptomsSource : Olive.Symptoms.Source
          foreach (var something in await SomeThings...())
          {
              if (Formula(something))
-                 Add(new Symptom { UniqueID=..., Warning=..., Receipient=... });
+                 Add(new Symptom { UniqueID=..., Warning=..., Receipient=..., FixUrl=... });
          }        
      }
 }
