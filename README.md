@@ -29,6 +29,7 @@ Host **Central** as a microservice. Inside appSettings.json, register all curren
        "Agents": [
          { "My Site 1": "https://mysite1.com/api/discover-symptoms" },
          { "My Site 2": "https://mysite2.com/api/discover-symptoms" },
+         { "My webforms site": "https://mysite3.com/discover-symptoms.axd" }
          ...
        ]
    }
