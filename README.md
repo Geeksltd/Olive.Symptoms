@@ -20,7 +20,9 @@ It consists of two main components:
 
 Each symptom item will have a UniqueID, Warning, Receipient and optionally a FixUrl.
 
-## Installing the central component
+![](https://github.com/Geeksltd/Olive.Symptoms/blob/main/Architecture.png?raw=true)
+
+## Central Warnings Microservice
 
 Host **Central** as a microservice. Inside appSettings.json, register all current agents.
 
