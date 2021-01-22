@@ -1,6 +1,6 @@
 ﻿<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
-		<id>MSharp</id>
+		<id>Olive.Symptoms</id>
 		<version>1.0.100</version>
 		<title>Olive.Symptoms</title>
 		<authors>Geeks Ltd</authors>
