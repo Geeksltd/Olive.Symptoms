@@ -55,7 +55,7 @@ public class SymptomsSource : Olive.Symptoms.Source
          foreach (var something in await SomeThings...())
          {
              if (Formula(something))
-                 Add(new Symptom(something, "{WarningKey}") { Warning=..., Responsible=..., FixUrl=... }
+                 Add(new Symptom(something, "{WarningKey}") { Warning=..., Responsible=..., FixUrl=..., Workspace=... }
                                 .Responsible(...)
                                 .Escalate(2.Days(), ...)
                                 .Escalate(3.Days(), ...));
@@ -67,6 +67,8 @@ public class SymptomsSource : Olive.Symptoms.Source
              //         .Escalate(2.Days(), personId) ---> specific person
              //         .Escalate(2.Days(), "PersonRole") ---> any person with the specified role
              //         .Escalate(2.Days(), "PersonRole", workSpaceId) --> Any person with the specified role and assigned to a workSpace
+             
+             // Note: Workspace (optional) is the ID of the project to which the warning relates.
          }        
      }
 }
