@@ -55,7 +55,17 @@ public class SymptomsSource : Olive.Symptoms.Source
          foreach (var something in await SomeThings...())
          {
              if (Formula(something))
-                 Add(new Symptom { UniqueID=..., Warning=..., Receipient=..., FixUrl=... });
+                 Add(new Symptom(something, "{WarningKey}") { Warning=..., Responsible=..., FixUrl=... }
+                                .Escalate(2.Days(), ...)
+                                .Escalate(3.Days(), ...);
+                 
+             // Note: The unique key of the Symptom will be {WarningKey}:{somethis.ID}.
+             // This is used to identify if this is the same warning, and used to calculate the time taken for the warning to be actioned.
+             
+             // Note: Escalate() method accepts different formats:
+             //         .Escalate(2.Days(), personId) ---> specific person
+             //         .Escalate(2.Days(), "PersonRole") ---> any person with the specified role
+             //         .Escalate(2.Days(), "PersonRole", projectId) --> Any person with the specified role and assigned to a project
          }        
      }
 }
