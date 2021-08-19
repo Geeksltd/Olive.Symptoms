@@ -65,9 +65,7 @@ public class SymptomsSource : Olive.Symptoms.Source
              
              // Note: Escalate() and Responsible methods accept different formats:
              //         .Escalate(2.Days(), personId) ---> specific person
-             //         .Escalate(2.Days(), "PersonRole") ---> any person with the specified role
-             //         .Escalate(2.Days(), "PersonRole", workSpaceId) --> Any person with the specified role and assigned to a workSpace
-             
+             //         .Escalate(2.Days(), "PersonRole") ---> any person with the specified role. If multiple people have that role, and a workspace Id is specified, then the person assigned to the project will be picked.             
              // Note: Workspace (optional) is the ID of the project to which the warning relates.
          }        
      }
