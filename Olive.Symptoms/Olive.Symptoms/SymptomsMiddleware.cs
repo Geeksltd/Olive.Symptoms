@@ -8,9 +8,6 @@
     {
         internal static async Task Discover<T>(HttpContext context) where T : Source, new()
         {
-            var keywords = context.Request.Param("searcher").OrEmpty().Split(' ');
-            if (keywords.None()) return;
-
             var searchInstance = new T { };
             await searchInstance.Discover();
             var response = JsonConvert.SerializeObject(searchInstance.Results);
