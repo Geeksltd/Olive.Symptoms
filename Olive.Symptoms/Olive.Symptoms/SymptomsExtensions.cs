@@ -8,7 +8,7 @@
         public static IApplicationBuilder UseSymptoms<T>(this IApplicationBuilder @this)
             where T : Source, new()
         {
-            @this.Map("/api/global-search",
+            @this.Map("/api/discover-symptoms",
                 app => app.Run(context => SymptomsMiddleware.Discover<T>(context)));
 
             return @this;
