@@ -25,8 +25,8 @@
             if (result.Warning.IsEmpty())
                 throw new ArgumentException("Warning cannot be empty in a symptom.");
 
-            if (result.Receipient.IsEmpty())
-                throw new ArgumentException("Receipient cannot be empty in a symptom.");
+            if (result.Responsibles.None())
+                throw new ArgumentException("Symptoms should have at least one responsible record.");
 
 
             result.FixUrl = FullUrl(result.FixUrl);
@@ -37,15 +37,6 @@
         {
             if (url.OrEmpty().StartsWith("~/")) return MakeAbsolute(url.TrimStart('~'));
             else return url;
-        }
-
-        /// <summary>
-        /// Adds an item to the results.
-        /// <paramref name="url">For relative Url to the current site use ~/my-url syntax.</paramref>
-        /// </summary>
-        protected void Add(string uniqueId, string warning, string receipient)
-        {
-            Add(new Symptom { UniqueId = uniqueId, Warning = warning });
         }
     }
 }

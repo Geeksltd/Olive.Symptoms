@@ -9,6 +9,8 @@
     <Import_RootNamespace>Common</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Escalation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Responsible.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Symptom.cs" />
   </ItemGroup>
