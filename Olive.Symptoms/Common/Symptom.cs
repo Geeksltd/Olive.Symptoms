@@ -36,7 +36,7 @@ namespace Olive.Symptoms
         /// UniqueID of the symptom (mandatory). This should be the same every time for the same logical warning.
         /// Use a combination of the object Id(s) that own this warning, and a brief unique text or code for the type of the warning. 
         /// </summary>
-        public string UniqueId { get; set; }
+        public string UniqueId => Info?.GetId().ToString();
 
         /// <summary>
         /// The warning text to show to the user. This is mandatory.
