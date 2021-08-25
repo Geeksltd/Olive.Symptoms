@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>Olive.Symptoms</PackageId>
-    <PackageVersion>1.0.45</PackageVersion>
+    <PackageVersion>1.0.46</PackageVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <Title>Olive Symptoms</Title>
