@@ -2,11 +2,11 @@
 
   <PropertyGroup>
 	  <TargetFramework>netcoreapp3.1</TargetFramework>
-	  <PackageId>Olive.Symptoms.Esclations</PackageId>
+	  <PackageId>Olive.Symptoms.Escalations</PackageId>
 	  <PackageVersion>1.0.0</PackageVersion>
 	  <AssemblyVersion>1.0.0.0</AssemblyVersion>
 	  <FileVersion>1.0.0.0</FileVersion>
-	  <Title>Olive Symptoms Esclations</Title>
+	  <Title>Olive Symptoms Escalations</Title>
 	  <Authors>Geeks Ltd</Authors>
 	  <PackageProjectUrl>https://github.com/Geeksltd/Olive</PackageProjectUrl>
 	  <PackageIconUrl>http://licensing.msharp.co.uk/Images/OliveComponent.png</PackageIconUrl>

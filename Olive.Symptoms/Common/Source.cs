@@ -28,6 +28,10 @@
             if (result.Responsibles.None())
                 throw new ArgumentException("Symptoms should have at least one responsible record.");
 
+            result.Responsibles.Do(r => r.Validate());
+
+            result.Escalations.Do(e => e.Validate());
+
 
             result.FixUrl = FullUrl(result.FixUrl);
             Results.Add(result);

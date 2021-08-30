@@ -1,5 +1,5 @@
-﻿using Olive.Entities;
-using System;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Olive.Symptoms
@@ -9,10 +9,9 @@ namespace Olive.Symptoms
     /// </summary>
     public class Symptom
     {
-        internal List<Escalation> Escalations { get; private set; } = new List<Escalation>();
-        internal List<Responsible> Responsibles { get; private set; } = new List<Responsible>();
+        public List<Escalation> Escalations { get; private set; } = new List<Escalation>();
+        public List<Responsible> Responsibles { get; private set; } = new List<Responsible>();
 
-        public IEntity Info { get; private set; }
         public string WarningKey { get; private set; }
 
         Symptom()
@@ -20,10 +19,11 @@ namespace Olive.Symptoms
 
         }
 
-        public Symptom(IEntity info, string warningKey)
+        public Symptom(string uniqueId, string warningKey, string warning)
         {
-            Info = info;
+            UniqueId = uniqueId;
             WarningKey = warningKey;
+            Warning = warning;
         }
 
         /// <summary>
@@ -31,17 +31,18 @@ namespace Olive.Symptoms
         /// For relative Url to the current site use ~/my-url syntax.
         /// </summary>
         public string FixUrl { get; set; }
+        public bool IsFixUrlModal { get; set; }
 
         /// <summary>
         /// UniqueID of the symptom (mandatory). This should be the same every time for the same logical warning.
         /// Use a combination of the object Id(s) that own this warning, and a brief unique text or code for the type of the warning. 
         /// </summary>
-        public string UniqueId => Info?.GetId().ToString();
+        public string UniqueId { get; private set; }
 
         /// <summary>
         /// The warning text to show to the user. This is mandatory.
         /// </summary>
-        public string Warning { get; set; }
+        public string Warning { get; private set; }
 
         /// <summary>
         /// (optional) is the ID of the project to which the warning relates.
@@ -53,25 +54,51 @@ namespace Olive.Symptoms
         /// Adds a new responsible item to this symptom. Either person or role should be specified.
         /// </summary>
         /// <param name="person">The ID or Email address of the user responsible for</param>
-        /// <param name="role">The role responsible for fixing this warning.</param>
-        public Symptom Responsible(string person = null, string role = null)
+        public Symptom Responsible(string person)
         {
-            Responsibles.Add(new Responsible(person: person, role: role));
+            Responsibles.Add(new Responsible { Person = person });
             return this;
         }
 
         /// <summary>
-        /// Adds a new esclation item to this symptom. Either person or role should be specified.
+        /// Adds a new responsible item to this symptom. Either person or role should be specified.
+        /// </summary>
+        /// <param name="role">The role responsible for fixing this warning.</param>
+        public Symptom ResponsibleAll(string role)
+        {
+            Responsibles.Add(new Responsible { Role = role });
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a new escalation item to this symptom. Either person or role should be specified.
         /// </summary>
         /// <param name="when">When this symptom should be escalated.</param>
         /// <param name="person">The ID or Email address of the user responsible for</param>
+        public Symptom EscalateTo(string person, TimeSpan when)
+        {
+            if (Escalations.Any(e => e.Responsible.Person == person)) return this;
+
+            Escalations.Add(new Escalation
+            {
+                When = when,
+                Responsible = new Responsible { Person = person }
+            });
+
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a new escalation item to this symptom. Either person or role should be specified.
+        /// </summary>
+        /// <param name="when">When this symptom should be escalated.</param>
         /// <param name="role">The role responsible for fixing this warning.</param>
-        public Symptom EscalateTo(TimeSpan when, string person = null, string role = null)
+        public Symptom EscalateToAll(string role, TimeSpan when)
         {
             Escalations.Add(new Escalation
             {
                 When = when,
-                Responsible = new Responsible(person: person, role: role)
+                Responsible = new Responsible { Role = role }
             });
 
             return this;

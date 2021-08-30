@@ -4,27 +4,23 @@ using System.Text;
 
 namespace Olive.Symptoms
 {
-    class Responsible
+    public class Responsible
     {
         /// <summary>
         /// The ID or Email address of the user responsible for.
         /// </summary>
-        public string Person { get; private set; }
+        public string Person { get; set; }
 
         /// <summary>
         /// The role responsible for fixing this warning.
         /// </summary>
-        public string Role { get; private set; }
+        public string Role { get; set; }
 
-        Responsible()
+        public void Validate()
         {
-
-        }
-
-        public Responsible(string person = null, string role = null)
-        {
-            if (person.HasValue() == role.HasValue())
+            if (Person.HasValue() == Role.HasValue())
                 throw new Exception("Either person or role should be specified");
         }
+
     }
 }
