@@ -30,8 +30,8 @@ namespace Olive.Symptoms
         /// A url to help the user to fix this warning.
         /// For relative Url to the current site use ~/my-url syntax.
         /// </summary>
-        public string FixUrl { get; set; }
-        public bool IsFixUrlModal { get; set; }
+        public string FixUrl { get; private set; }
+        public bool IsFixUrlModal { get; private set; }
 
         /// <summary>
         /// UniqueID of the symptom (mandatory). This should be the same every time for the same logical warning.
@@ -109,6 +109,14 @@ namespace Olive.Symptoms
         {
             Workspace = workspace;
 
+            return this;
+        }
+
+        /// (optional) is the ID of the project to which the warning relates.
+        public Symptom WithFixUrl(string url, bool isModal = false)
+        {
+            FixUrl = url;
+            IsFixUrlModal = isModal;
             return this;
         }
     }
