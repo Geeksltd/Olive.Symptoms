@@ -33,7 +33,7 @@
             result.Escalations.Do(e => e.Validate());
 
 
-            result.FixUrl = FullUrl(result.FixUrl);
+            result.WithFixUrl(FullUrl(result.FixUrl));
             Results.Add(result);
         }
 
