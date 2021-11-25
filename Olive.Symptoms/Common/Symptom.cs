@@ -12,7 +12,7 @@ namespace Olive.Symptoms
         public List<Escalation> Escalations { get; private set; } = new List<Escalation>();
         public List<Responsible> Responsibles { get; private set; } = new List<Responsible>();
 
-        public string WarningKey { get; private set; }
+        public string WarningKey { get; set; }
 
         Symptom()
         {
@@ -30,24 +30,24 @@ namespace Olive.Symptoms
         /// A url to help the user to fix this warning.
         /// For relative Url to the current site use ~/my-url syntax.
         /// </summary>
-        public string FixUrl { get; private set; }
-        public bool IsFixUrlModal { get; private set; }
+        public string FixUrl { get; set; }
+        public bool IsFixUrlModal { get; set; }
 
         /// <summary>
         /// UniqueID of the symptom (mandatory). This should be the same every time for the same logical warning.
         /// Use a combination of the object Id(s) that own this warning, and a brief unique text or code for the type of the warning. 
         /// </summary>
-        public string UniqueId { get; private set; }
+        public string UniqueId { get; set; }
 
         /// <summary>
         /// The warning text to show to the user. This is mandatory.
         /// </summary>
-        public string Warning { get; private set; }
+        public string Warning { get; set; }
 
         /// <summary>
         /// (optional) is the ID of the project to which the warning relates.
         /// </summary>
-        public string Workspace { get; private set; }
+        public string Workspace { get; set; }
 
 
         /// <summary>
